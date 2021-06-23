@@ -1,0 +1,18 @@
+{% extends "blog/blog_base.html"%}
+
+{% block content %}
+
+<h1>Search Results</h1>
+
+
+<ol>
+  {% for obj in object_list %}
+    <li>
+      <a href="{% url 'blog:version_detail' pk=obj.pk %}">{{obj.version_title}}</a>
+    </li>
+  {% endfor %}
+</ol>
+
+{{ object_list.count }} matches
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "blog/blog_base.html" %}
+
+{% block content %}
+  <table>
+    <th colspan="2">{{ object.version_title }}</th>
+    {% if object.song %}
+      <tr>
+        <td>Song</td>
+        <td>{{ object.song }}</td>
+      </tr>
+      <tr>
+        <td>Song Form</td>
+        <td>{{ object.song.song_form }}</td>
+      </tr>
+    {% endif %}
+    <tr>
+      <td>Date</td>
+      <td>{{ object.session.date }}</td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td>{{ object.session.location }}</td>
+    </tr>
+    <tr>
+      <td>Personnel</td>
+      <td>{{ object.session.personnel }}</td>
+    </tr>
+    <tr>
+      <td>Session</td>
+      <td>{{ object.session }}</td>
+    </tr>
+    {% if object.notes %}
+    <tr>
+      <td>Notes</td>
+      <td>{{ object.notes }}</td>
+    </tr>
+    {% endif %}
+    {% if object.transcription_pdf %}
+      <tr>
+        <td>Transcription .pdf</td>
+        <td><a href="{{ object.transcription_pdf.url }}" target="_blank">View PDF</a></td>
+      </tr>
+    {% endif %}
+    {% if object.sibelius_file %}
+      <tr>
+        <td>Transcription .sib</td>
+        <td><a href="{{ object.sibelius_file.url }}" download>Download sibelius file</a></td>
+      </tr>
+    {% endif %}
+    {% if object.youtube_link %}
+    <tr>
+      <td>YouTube</td>
+      <td><a href="{{ object.youtube_link }}" target='_blank'>{{ object.youtube_link }}</a></td>
+    </tr>
+    {% endif %}
+    <tr>
+      <td>Track Releases</td>
+      <td>{{ object.releases }}</td>
+    </tr>
+    <tr>
+      <td>Album Releases</td>
+      <td>
+        {{ object.session.album_releases }}
+    </tr>
+  </table><br>
+{% endblock %}

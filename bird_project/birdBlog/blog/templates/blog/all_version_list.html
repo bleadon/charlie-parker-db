@@ -1,0 +1,41 @@
+{% extends "blog/blog_base.html" %}
+
+{% block content %}
+  {% for version in version_list %}
+    <table>
+      <th colspan="2">{{ version.version_title }}</th>
+      <tr>
+        <td>Song</td>
+        <td>{{ version.song }}</td>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td>{{ version.session.date }}</td>
+      </tr>
+      {% if version.notes %}
+      <tr>
+        <td>Notes</td>
+        <td>{{ version.notes }}</td>
+      </tr>
+      {% endif %}
+      {% if version.transcription_pdf %}
+        <tr>
+          <td>Transcription .pdf</td>
+          <td><a href="{{ version.transcription_pdf.url }}" target="_blank">View PDF</a></td>
+        </tr>
+      {% endif %}
+      {% if version.sibelius_file %}
+        <tr>
+          <td>Transcription .sib</td>
+          <td><a href="{{ version.sibelius_file.url }}" download>Download sibelius file</a></td>
+        </tr>
+      {% endif %}
+      {% if version.youtube_link %}
+      <tr>
+        <td>YouTube</td>
+        <td><a href="{{ version.youtube_link }}" target='_blank'>{{ version.youtube_link }}</a></td>
+      </tr>
+      {% endif %}
+    </table><br>
+  {% endfor %}
+{% endblock %}
