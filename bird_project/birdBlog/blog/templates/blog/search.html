@@ -5,7 +5,7 @@
 <h1>Use one or multiple filters to narrow your search</h1>
 <form class="" action="{% url 'blog:search_results' %}" method="GET">
   {% csrf_token %}
-  <label for="key">Filter by Key</label>
+  <label for="key">Key</label>
   <!-- <input name="key" type="text" name="" id="key" placeholder="Search..."> -->
   <select name="key">
     <!-- <% keys = [
@@ -18,32 +18,41 @@
 
   </select>
 
-  <label for="form">Filter By Song Form</label>
+  <label for="form">Song Form</label>
   <input name="form" type="text" name="" id="form" placeholder="Song form...">
 
-  <label for="song">Filter By Song</label>
+  <label for="song">Song</label>
   <input name="song" type="text" name="" id="song" placeholder="Song...">
 
-  <label for="person">Filter By Personnel (Seperate by commas if you want to search for multiple persons together)</label>
+  <label for="person">Personnel (Seperate by commas if you want to search for multiple persons together)</label>
   <input name="person" type="text" name="" id="person" placeholder="Personnel...">
 
-  <label for="date">Filter By Date</label>
+  <label for="date">Date</label>
   <input name="date" type="text" name="" id="date" placeholder="Date...">
 
-  <label for="location">Filter By Location</label>
+  <label for="location">Location</label>
   <input name="location" type="text" name="" id="location" placeholder="Album...">
 
-  <label for="album">Filter By Album</label>
+  <label for="album">Album</label>
   <input name="album" type="text" name="" id="album" placeholder="Album...">
 
-  <label for="notes">Filter By Notes</label>
-  <input name="notes" type="text" name="" id="notes" placeholder="Date...">
+  {% if user.is_superuser or user.is_staff %}
 
+    <label for="notes">Notes</label>
+    <input name="notes" type="text" name="" id="notes" placeholder="Date...">
 
-  <label for="pdf">Filter By PDF Availability</label>
-  <input class="checkmark" name="pdf" type="checkbox">
+    <label for="pdf">PDF Download Availabe</label>
+    <input class="checkmark" name="pdf" id="pdf" type="checkbox"><br>
 
-  <input type="submit" name="" value="Go">
+    <label for="sound">Sound File Download Available</label>
+    <input class="checkmark" name="sound" id="sound" type="checkbox"><br>
+
+  {% endif %}
+
+  <label for="youtube">YouTube Link Available</label>
+  <input class="checkmark" name="youtube" id="youtube" type="checkbox"><br>
+
+  <input type="submit" name="" value="SEARCH">
 </form>
 
 {% endblock %}

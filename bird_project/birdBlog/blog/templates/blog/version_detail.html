@@ -29,24 +29,34 @@
       <td>Session</td>
       <td>{{ object.session }}</td>
     </tr>
-    {% if object.notes %}
-    <tr>
-      <td>Notes</td>
-      <td>{{ object.notes }}</td>
-    </tr>
-    {% endif %}
-    {% if object.transcription_pdf %}
+
+    {% if user.is_superuser or user.is_staff %}
+      {% if object.notes %}
       <tr>
-        <td>Transcription .pdf</td>
-        <td><a href="{{ object.transcription_pdf.url }}" target="_blank">View PDF</a></td>
+        <td>Notes</td>
+        <td>{{ object.notes }}</td>
       </tr>
+      {% endif %}
+      {% if object.transcription_pdf %}
+        <tr>
+          <td>Transcription .pdf</td>
+          <td><a href="{{ object.transcription_pdf.url }}" target="_blank">View PDF</a></td>
+        </tr>
+      {% endif %}
+      {% if object.sibelius_file %}
+        <tr>
+          <td>Transcription .sib</td>
+          <td><a href="{{ object.sibelius_file.url }}" download>Download Sibeleius File</a></td>
+        </tr>
+      {% endif %}
+      {% if object.sound_file %}
+        <tr>
+          <td>Sound File</td>
+          <td><a href="{{ object.sound_file.url }}" download>Download Sound File</a></td>
+        </tr>
+      {% endif %}
     {% endif %}
-    {% if object.sibelius_file %}
-      <tr>
-        <td>Transcription .sib</td>
-        <td><a href="{{ object.sibelius_file.url }}" download>Download sibelius file</a></td>
-      </tr>
-    {% endif %}
+
     {% if object.youtube_link %}
     <tr>
       <td>YouTube</td>

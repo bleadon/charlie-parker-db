@@ -60,7 +60,19 @@ class SearchResultsView(generic.ListView):
 
         form_query = self.request.GET.get('notes')
         if form_query:
-            object_list = object_list.filter(version__notes__icontains=form_query)
+            object_list = object_list.exlude(notes__icontains=form_query)
+
+        form_query = self.request.GET.get('pdf')
+        if form_query:
+            object_list = object_list.exclude(transcription_pdf="")
+
+        form_query = self.request.GET.get('sound')
+        if form_query:
+            object_list = object_list.exclude(sound_file="")
+
+        form_query = self.request.GET.get('youtube')
+        if form_query:
+            object_list = object_list.exclude(youtube_link="")
 
         # person_query = self.request.GET.get('person')
         # object_list = models.Version.objects.filter(session__personnel__icontains=person_query)
