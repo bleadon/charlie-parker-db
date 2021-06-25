@@ -114,6 +114,15 @@ table {
   min-width: 300px;
 }
 
+.myHeaders {
+  text-align: center;
+}
+
+.counter {
+  text-align: center;
+  padding-top: 2em;
+}
+
 @media screen and (min-width: 350px) {
   body {
     grid-template-areas:
@@ -139,11 +148,11 @@ table {
       flex-flow: row;
   }
   .myContainer {
-      margin: 0 20%;
+      margin: 0 5%;
   }
 }
 
-@media screen and (min-width: 870px) {
+@media screen and (min-width: 1000px) {
   body {
     display: grid;
     grid-template-areas:
@@ -152,6 +161,6 @@ table {
       "5 footer 6"
   }
   .myContainer {
-      margin: 0 20%;
+      margin: 0 10%;
   }
 }

@@ -2,17 +2,23 @@
 
 {% block content %}
 
-<h1>Search Results</h1>
+<h1 class="myHeaders">Search Results</h1>
 
-
-<ol>
+<table>
   {% for obj in object_list %}
-    <li>
-      <a href="{% url 'blog:version_detail' pk=obj.pk %}">{{obj.version_title}}</a>
-    </li>
+  <tr>
+  <td>
+    <a href="{% url 'blog:version_detail' pk=obj.pk %}">{{obj.version_title}}</a>
+  </td>
+  <td>
+    {{obj.session}}
+  </td>
+  </tr>
   {% endfor %}
-</ol>
+</table>
 
-{{ object_list.count }} matches
+<div class="counter">
+  {{ object_list.count }} matches
+</div>
 
 {% endblock %}

@@ -23,7 +23,7 @@ class Session(models.Model):
     album_releases = models.TextField(blank=True)
 
     def __str__(self):
-        return f"{self.title} {self.date}"
+        return f"{self.title} - {self.date}"
 
     def get_absolute_url(self):
         return reverse('blog:list_session')
